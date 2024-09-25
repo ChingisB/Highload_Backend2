@@ -21,6 +21,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
     tags = models.ManyToManyField('Tag', related_name='posts', through='PostTag')
+    comment_count = models.PositiveIntegerField(default=0) 
 
     class Meta:
         indexes = [
