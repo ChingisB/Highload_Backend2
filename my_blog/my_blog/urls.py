@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from blog.views import get_post_with_comments
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('posts/<post_id:int>', get_post_with_comments)
 ]
