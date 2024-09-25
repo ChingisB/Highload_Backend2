@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from blog.views import get_post_with_comments
+from blog.views import get_post_with_comments, get_posts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('posts/<post_id:int>', get_post_with_comments)
+    path('posts/<post_id:int>/', get_post_with_comments),
+    path('posts/', get_posts)
 ]
