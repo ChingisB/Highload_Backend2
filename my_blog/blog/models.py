@@ -20,7 +20,7 @@ class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     created_date = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField('Tag', related_name='posts')
+    tags = models.ManyToManyField('Tag', related_name='posts', through='PostTag')
 
     class Meta:
         indexes = [
@@ -52,3 +52,15 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+    
+    
+class PostTag(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['post', 'tag']),
+            models.Index(fields=['tag']),
+        ]
+        unique_together = ('post', 'tag') 
