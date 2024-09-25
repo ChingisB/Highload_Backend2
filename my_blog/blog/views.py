@@ -6,8 +6,7 @@ from django.views.decorators.cache import cache_page
 
 def get_post_by_id(request, post_id):
     post = get_object_or_404(get_post_with_comments(post_id))
-    comments = post.comment_set.all()
-    return render(request, 'post_with_comments.html', {'post': post, 'comments': comments})
+    return render(request, 'post_with_comments.html', {'post': post})
 
 
 @cache_page(60)
