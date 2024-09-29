@@ -10,7 +10,7 @@
    <ul>
         {% for post in posts %}
         <li>
-            <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a> by {{ post.author }} on {{ post.created_at }} with {{ post.comment_count}} comments
+            <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a> by {{ post.author }} on {{ post.created_date }} with {{ post.comment_count}} comments
         </li>
         {% endfor %}
     </ul>

@@ -6,14 +6,14 @@ from django.core.cache import cache
 
 
 def get_post_by_id(request, post_id):
-    post = get_object_or_404(get_post_with_comments(post_id))
-    return render(request, 'post_with_comments.html', {'post': post})
+    post = get_post_with_comments(post_id)
+    return render(request, 'blog/post_with_comments.html', {'post': post})
 
 
 @cache_page(60)
 def get_posts(request):
-    posts = Post.objects.all().order_by('-created_at')
-    return render(request, 'post_list.html', {'posts': posts})
+    posts = Post.objects.all().order_by('-created_date')
+    return render(request, 'blog/post_list.html', {'posts': posts})
 
 
 def add_comment(request, post_id):
