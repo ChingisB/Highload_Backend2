@@ -20,6 +20,6 @@ from blog.views import get_post_with_comments, get_posts
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('posts/<post_id:int>/', get_post_with_comments),
+    path('posts/<int:post_id>/', get_post_with_comments),
     path('posts/', get_posts)
 ]
